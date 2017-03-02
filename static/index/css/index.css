@@ -1,0 +1,282 @@
+/*
+ * Created by Robert Xie
+ * © 2015 HIT Microsoft Club
+ * All Rights Reserved
+ */
+
+#welcome {
+    position: absolute;
+    z-index: 3;
+}
+
+#welcome > #welcome-logo {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+}
+
+#welcome > #welcome-text {
+    color: #767676;
+    position: absolute;
+    font-size: 70px;
+    margin: 0;
+    width: 700px;
+    clip: rect(auto, 0px, auto, auto);
+    white-space: nowrap;
+}
+
+img.banner {
+    width: 100%;
+}
+
+.intro .flipview {
+    height: 200px;
+}
+
+.department {
+    width: calc(16.66% - 10px);
+    float: left;
+    cursor: pointer;
+}
+
+.department > .row > * > .department-name {
+    text-align: left;
+    font-weight: bold;
+}
+
+.department > .row > * > img {
+    float: left;
+    width: 80% !important;
+    margin: 10px 10%;
+}
+
+.border.video {
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+.video > video {
+    width: 100%;
+    height: auto;
+}
+
+.dynamics .listview-item > .dynamics-id {
+    display: none;
+}
+
+.dynamics .listview-item > .dtitle {
+    font-weight: bold;
+}
+
+.dynamics .listview-item > .dauthor {
+    font-weight: normal;
+}
+
+.dynamics .listview-item > .ddate {
+    font-weight: 200;
+}
+
+.dynamics #abstract {
+    margin-right: 55px;
+}
+
+.dynamics #abstract > #title {
+    font-size: 3.0rem;
+    font-weight: 200;
+    line-height: 1.176;
+    letter-spacing: 0;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+
+.dynamics #abstract > #main {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.333;
+    clear: both;
+}
+
+.dynamics #abstract > #form {
+    margin-top: 10px;
+}
+
+.dynamics #abstract > #form > .win-button {
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+}
+
+.dynamics #abstract > #form > .win-button:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+.dynamics #abstract > #form > .win-button:active {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.dynamics #abstract > #form > .win-button:disabled {
+    color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+}
+
+.dynamics .more {
+    background-color: #cdcdcd;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    height: 300px;
+    width: 30px;
+    right: 25px;
+    text-align: center;
+    padding-top: 135px;
+    font-size: 30px;
+    cursor: pointer;
+    -webkit-transition: opacity 200ms ease;
+    -moz-transition: opacity 200ms ease;
+    -o-transition: opacity 200ms ease;
+    transition: opacity 200ms ease;
+}
+
+.dynamics .more:hover {
+    opacity: 1.0;
+}
+
+.joinus #joinus-banner > img {
+    position: absolute;
+}
+
+.joinus #joinus-banner > #joinus-yellow,
+.joinus #joinus-banner > #joinus-others {
+    display: none;
+}
+
+.joinus #joinus-banner > #joinus-all {
+    display: none;
+}
+
+.joinus #joinus-banner > #joinus-text {
+    color: #ffffff !important;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.joinus #joinus-banner > #disabled-text {
+    color: #32383f !important;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.links .row.link-row:first-child {
+    margin-top: 0;
+}
+
+.links .row.link-row {
+    margin-top: 10px;
+}
+
+.links .row.link-row .link-id {
+    color: #ffffff;
+    text-align: center;
+}
+
+.links #links-box{
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: calc(100% - 1px);
+    width: -moz-calc(100% - 1px);
+    width: -webkit-calc(100% - 1px);
+}
+
+.links .row.link-row:nth-child(4n-3) .link-id {
+    background-color: #d01d16;
+}
+
+.links .row.link-row:nth-child(4n-2) .link-id {
+    background-color: #f3cf39;
+}
+
+.links .row.link-row:nth-child(4n-1) .link-id {
+    background-color: #4aa2ee;
+}
+
+.links .row.link-row:nth-child(4n) .link-id {
+    background-color: #3ba329;
+}
+
+.links .row.link-row .link-title,
+.links .row.link-row .link-url {
+    text-align: left;
+}
+
+#enroll-dialog p.no-space {
+    margin-bottom: 0;
+}
+
+@media (min-width: 992px) and (max-width: 1340px) {
+    .dynamics .listview-item {
+        display: block;
+        width: 100%;
+        padding: 18px 5px;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 992px) {
+    #dynamics-listview {
+        padding-right: 70px;
+    }
+
+    #abstract {
+        display: none;
+    }
+
+    .dynamics .more {
+        margin-top: -300px;
+        width: 60px;
+        font-size: 60px;
+    }
+
+    .row .intro.odd .col-md-4 {
+        padding-bottom: 15px;
+    }
+
+    .row .intro.even .col-md-4 {
+        padding-top: 15px;
+    }
+
+    .links .row.link-row a {
+        margin-left: 0;
+    }
+
+    .links .row.link-row .link-id {
+        text-align: left;
+        padding: 0 10px;
+    }
+
+    .links .row.link-row .link-title {
+        margin-top: 10px;
+        padding: 0 10px;
+    }
+
+    .links .row.link-row .link-url {
+        margin-bottom: 10px;
+        padding: 0 10px;
+    }
+
+    .links .row.link-row:nth-child(4n-3) {
+        border: solid 1px #d01d16;
+    }
+
+    .links .row.link-row:nth-child(4n-2) {
+        border: solid 1px #f3cf39;
+    }
+
+    .links .row.link-row:nth-child(4n-1) {
+        border: solid 1px #4aa2ee;
+    }
+
+    .links .row.link-row:nth-child(4n) {
+        border: solid 1px #3ba329;
+    }
+}

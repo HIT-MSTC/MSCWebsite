@@ -1,0 +1,81 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录 - 后台管理</title>
+    <link href="{% static 'frameworks/winjs/css/ui-dark.css' %}" rel="stylesheet"/>
+    <link href="{% static 'frameworks/bootstrap/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'common/css/common.css' %}" rel="stylesheet"/>
+    <link href="{% static 'login/css/login.css' %}" rel="stylesheet"/>
+    <script src="{% static 'frameworks/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'frameworks/jquery/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'frameworks/threejs/js/three.min.js' %}"></script>
+    <script src="{% static 'frameworks/threejs/js/Detector.js' %}"></script>
+    <script src="{% static 'common/js/common.js' %}"></script>
+    <script src="{% static 'login/js/login.js' %}"></script>
+</head>
+<body>
+<script type="text/javascript">
+    if(navigator.userAgent.indexOf('MQQBrowser') > -1){
+        alert("QQ内置浏览器暂不支持加载外部文件中的Javascript。\n请尝试使用其他浏览器打开，谢谢。");
+    }
+    else if(navigator.userAgent.indexOf('UCBrowser') > -1 && navigator.userAgent.indexOf('Mobile') > -1){
+        alert("手机UC浏览器暂不支持加载外部文件中的Javascript。\n请尝试使用其他浏览器打开，谢谢。");
+    }
+</script>
+<script id="vs" type="x-shader/x-vertex">
+			varying vec2 vUv;
+
+			void main() {
+
+				vUv = uv;
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+			}
+
+</script>
+
+<script id="fs" type="x-shader/x-fragment">
+			uniform sampler2D map;
+
+			uniform vec3 fogColor;
+			uniform float fogNear;
+			uniform float fogFar;
+
+			varying vec2 vUv;
+
+			void main() {
+				float depth = gl_FragCoord.z / gl_FragCoord.w;
+				float fogFactor = smoothstep( fogNear, fogFar, depth );
+				gl_FragColor = texture2D( map, vUv );
+				gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );
+				gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
+			}
+
+</script>
+<div id="login">
+    <div id="login-title">
+        <img id="login-logo" src="{% static 'images/logo300.png' %}">
+
+        <p id="login-text">后台管理</p>
+    </div>
+
+    {% if status == "failed" %}
+        <form id="login-form" class="login-failed" method="post">
+    {% else %}
+        <form id="login-form" method="post">
+    {% endif %}
+    {% csrf_token %}
+    <p>用户名：<input type="text" id="username" name="username"></p>
+
+    <p>密码：<input type="password" id="password" name="password"></p>
+
+    <p><input type="submit" value="登录"><input type="reset" value="重置"></p>
+    </form>
+</div>
+</body>
+<script type="text/javascript">
+    loadLogin();
+</script>
+</html>

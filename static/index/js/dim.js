@@ -1,0 +1,13 @@
+var animationState, rotateAnimation, rotateAnimationTimeout, textAnimation, textAnimationTimeout;
+var container, camera, scene, renderer, start_time, windowHalfX, windowHalfY;
+var logo, welcome, welcomeText, text_start_time;
+var video, firstImage;
+var bannerArea, noBanner, noLinks, linksArea, linksList, linksBorder, linksHead, linksBox;
+var flipView1, flipView1Control, flipView2, flipView2Control;
+var firstDepartment, dynamicsListView, dynamicsMore, dynamicsHeight, dynamicsBorder;
+var abstract, title, main, form, formDialog, currentPaperID, questions, reading, selected, selectedID, lastSelectedID;
+var joinus, joinusSlogan, joinusDisabled, joinusYellow, joinusOthers, joinusAll, joinusHeight, joinusPadding;
+var joinusRight, joinusMiddle, joinusTextWidth, logoLeft, textLeft, textClip;
+var lastDepartmentBorder, lastDepartmentIndex;
+var enrollDialog;
+var departments = ["技术部", "运营部", "市场部", "人力部", "财务部", "产品部"];

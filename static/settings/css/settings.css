@@ -1,0 +1,174 @@
+#settings {
+    font-size: 15px;
+    overflow: auto;
+}
+
+#settings .row:first-child {
+    margin-top: 0 !important;
+}
+
+#settings .row {
+    margin-top: 10px;
+}
+
+#settings .row p:first-child {
+    margin-top: 0 !important;
+}
+
+#settings .row p {
+    margin-top: 10px;
+}
+
+#settings .row #hidden-html{
+    display: none;
+}
+
+#settings .row .win-toggleswitch-header {
+    margin-top: 5px;
+}
+
+#settings .row #banner-url {
+    width: 50%;
+}
+
+.row input[type=text],
+.row input[type=email],
+.row input[type=number],
+.row input[type=password],
+.row input[type=search],
+.row input[type=tel],
+.row input[type=url] {
+    color: #000000;
+    background-color: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+.row input[type=text]:-ms-input-placeholder,
+.row input[type=email]:-ms-input-placeholder,
+.row input[type=number]:-ms-input-placeholder,
+.row input[type=password]:-ms-input-placeholder,
+.row input[type=search]:-ms-input-placeholder,
+.row input[type=tel]:-ms-input-placeholder,
+.row input[type=url]:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.row input[type=text]::-webkit-input-placeholder,
+.row input[type=email]::-webkit-input-placeholder,
+.row input[type=number]::-webkit-input-placeholder,
+.row input[type=password]::-webkit-input-placeholder,
+.row input[type=search]::-webkit-input-placeholder,
+.row input[type=tel]::-webkit-input-placeholder,
+.row input[type=url]::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.row input[type=text]::-moz-input-placeholder,
+.row input[type=email]::-moz-input-placeholder,
+.row input[type=number]::-moz-input-placeholder,
+.row input[type=password]::-moz-input-placeholder,
+.row input[type=search]::-moz-input-placeholder,
+.row input[type=tel]::-moz-input-placeholder,
+.row input[type=url]::-moz-input-placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.row input[type=text]:hover,
+.row input[type=email]:hover,
+.row input[type=number]:hover,
+.row input[type=password]:hover,
+.row input[type=search]:hover,
+.row input[type=tel]:hover,
+.row input[type=url]:hover {
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.row input[type=text]:focus,
+.row input[type=email]:focus,
+.row input[type=number]:focus,
+.row input[type=password]:focus,
+.row input[type=search]:focus,
+.row input[type=tel]:focus,
+.row input[type=url]:focus {
+    color: #000000;
+}
+
+.row input[type=text]::-ms-clear,
+.row input[type=email]::-ms-clear,
+.row input[type=number]::-ms-clear,
+.row input[type=password]::-ms-clear,
+.row input[type=search]::-ms-clear,
+.row input[type=tel]::-ms-clear,
+.row input[type=url]::-ms-clear {
+    display: block;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.row input[type=text]::-ms-clear:active,
+.row input[type=email]::-ms-clear:active,
+.row input[type=number]::-ms-clear:active,
+.row input[type=password]::-ms-clear:active,
+.row input[type=search]::-ms-clear:active,
+.row input[type=tel]::-ms-clear:active,
+.row input[type=url]::-ms-clear:active {
+    color: #ffffff;
+}
+
+#settings #link-details #links-list {
+    width: 100%;
+    border: #2d3239 solid 1px;
+    margin-top: 10px;
+    height: 255px;
+}
+
+#settings #link-details #links-list .link-content {
+    padding: 0 5px;
+    margin: 10px 30px 10px 0;
+}
+
+#settings #link-details #links-list .link-content > .link-id {
+    font-weight: bold;
+    height: 20px;
+    display: none;
+}
+
+#settings #link-details #links-list .link-content > .link-title {
+    font-weight: bold;
+    height: 20px;
+}
+
+#settings #link-details .win-button {
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+}
+
+#settings #link-details .win-button:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+#settings #link-details .win-button:active {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#link-dialog input{
+    
+    width: 100%;
+}
+
+#link-dialog hr{
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+
+#link-dialog img{
+    width: 100%;
+    height: auto;
+}
+
+.text > #text-content > #form > .win-button:disabled {
+    color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+}

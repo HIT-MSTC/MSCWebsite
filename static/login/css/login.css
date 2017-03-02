@@ -1,0 +1,102 @@
+/*
+ * Created by Robert Xie
+ * © 2015 HIT Microsoft Club
+ * All Rights Reserved
+ */
+
+@keyframes warning {
+    from {
+        background-color: #d11d16;
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
+@-moz-keyframes warning {
+    from {
+        background-color: #d11d16;
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
+@-webkit-keyframes warning {
+    from {
+        background-color: #d11d16;
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
+@-o-keyframes warning {
+    from {
+        background-color: #d11d16;
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
+#login > #login-title {
+    position: absolute;
+    z-index: 3;
+}
+
+#login > #login-title > #login-logo {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    transform: rotateY(-45deg);
+}
+
+#login > #login-title > #login-text {
+    color: #767676;
+    position: absolute;
+    font-size: 70px;
+    margin: 0;
+    width: 280px;
+    white-space: nowrap;
+}
+
+#login > form {
+    position: absolute;
+    background-color: transparent;
+    color: #2d3239;
+    width: 275px;
+    padding: 30px;
+    height: 168px;
+    white-space: nowrap;
+}
+
+#login > form.login-failed {
+    animation: warning 3s 1;
+    -moz-animation: warning 3s 1;
+    -webkit-animation: warning 3s 1;
+    -o-animation: warning 3s 1;
+}
+
+#login > form > p:last-child {
+    margin: 0;
+}
+
+#login > form > p {
+    font-size: 14px !important;
+    margin: 0 0 15px 0;
+}
+
+#login > form > p > #username {
+    margin-left: 5px;
+    width: 152px;
+}
+
+#login > form > p > #password {
+    margin-left: 19px;
+    width: 152px;
+}
+
+#login > form > p > input[type=reset] {
+    margin-left: 125px;
+}

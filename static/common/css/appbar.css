@@ -1,0 +1,16 @@
+/*
+ * Created by Robert Xie
+ * © 2015 HIT Microsoft Club
+ * All Rights Reserved
+ */
+
+.win-commandingsurface .win-commandingsurface-actionarea, .win-commandingsurface .win-commandingsurface-actionarea{
+    background-color: #32383f !important;
+}
+.win-commandingsurface .win-commandingsurface-overflowarea, .win-commandingsurface .win-commandingsurface-overflowarea{
+    background-color: #32383f !important;
+}
+.win-commandingsurface .win-commandingsurface-content .win-command,
+.win-commandingsurface .win-commandingsurface-content .win-command .win-commandimage{
+    cursor: pointer !important;
+}

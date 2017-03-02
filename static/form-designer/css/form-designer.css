@@ -1,0 +1,119 @@
+/*
+ * Created by Robert Xie
+ * © 2015 HIT Microsoft Club
+ * All Rights Reserved
+ */
+
+@media (max-width: 1340px) {
+    .question-list .listview-item {
+        display: block;
+        width: 100%;
+        padding: 10px 5px;
+        overflow: hidden;
+    }
+
+    .designer input[type=range] {
+        width: 35% !important;
+    }
+
+    #options-max-label {
+        clear: both;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    #options-max, #options-max-text {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+	
+	.question-list .listview-item > .question-desc,
+	.question-list .listview-item > .question-id,
+	.question-list .listview-item > .question,
+	.question-list .listview-item > .question-type{
+		height: 17px !important;
+	}
+}
+
+.question-list {
+    padding: 0 !important;
+}
+
+.question-list .listview-item > .question-desc {
+    float: left;
+    font-weight: bold;
+    margin-right: 2px;
+	height: 20px;
+}
+
+.question-list .listview-item > .question-id {
+    font-weight: bold;
+	height: 20px;
+}
+
+.question-list .listview-item > .question {
+    font-weight: normal;
+	height: 20px;
+}
+
+.question-list .listview-item > .question-type {
+    font-weight: 200;
+	height: 20px;
+}
+
+.designer {
+    font-family: "Segoe UI", "Microsoft YaHei UI", sans-serif, "Segoe MDL2 Assets", "Symbols";
+    overflow-y: auto;
+    padding: 30px !important;
+}
+
+.designer > #designer-container {
+    opacity: 0;
+}
+
+.designer > #designer-container > .row {
+    margin-bottom: 10px !important;
+}
+
+.designer > #designer-container > .row > *, .designer > #designer-container > #options-container > *,
+.designer > #designer-container > #options-container > * > .row > * {
+    padding: 0;
+}
+
+.designer .same-row {
+    float: left;
+}
+.designer .tooltip{
+    width: 25px;
+}
+
+.designer input, select {
+    margin-left: 10px;
+}
+
+.designer label:nth-of-type(n+2) {
+    margin-left: 20px;
+}
+
+.designer #question {
+    width: 60%
+}
+
+.designer select {
+    width: 10%;
+    height: 24px;
+}
+
+.designer input[type=range] {
+    width: 16%;
+    padding: 0;
+    height: 20px;
+}
+
+.designer .option-row {
+    margin-bottom: 10px !important;
+}
+
+.designer .option-row input[type=text] {
+    width: 50%;
+}

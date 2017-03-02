@@ -1,0 +1,65 @@
+/*
+ * Created by Robert Xie
+ * © 2015 HIT Microsoft Club
+ * All Rights Reserved
+ */
+
+.win-splitview-pane {
+    background-color: #32383f !important;
+}
+
+.win-splitview-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #2e80ab !important;
+}
+
+.win-splitviewpane-toggle {
+    float: left;
+}
+
+.header {
+    white-space: nowrap;
+}
+
+.title {
+    font-size: 25px;
+    left: 50px;
+    margin-top: 6px;
+    vertical-align: middle;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.nav-commands {
+    margin-top: 20px;
+}
+
+a.win-navbarcommand{
+    text-decoration: none !important;
+}
+
+.win-navbarcommand.place-bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.win-navbarcommand-button {
+    background-color: transparent;
+}
+
+.win-splitview-pane-hidden .win-navbarcommand-button {
+    width: 46px;
+}
+
+.win-splitview-pane-hidden .win-navbarcommand-label {
+    visibility: hidden;
+}
+
+.content-text {
+    margin-left: 20px;
+    margin-top: 6px;
+}
+

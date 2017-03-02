@@ -1,0 +1,213 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>动态管理 - 后台管理</title>
+    {{ form.media }}
+    <link href="{% static 'frameworks/winjs/css/ui-dark.css' %}" rel="stylesheet"/>
+    <link href="{% static 'frameworks/bootstrap/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'frameworks/metro-icon/css/metro-icons.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'common/css/common.css' %}" rel="stylesheet"/>
+    <link href="{% static 'common/css/splitview.css' %}" rel="stylesheet"/>
+    <link href="{% static 'common/css/listview.css' %}" rel="stylesheet"/>
+    <link href="{% static 'common/css/appbar.css' %}" rel="stylesheet"/>
+    <link href="{% static 'common/css/toggle.css' %}" rel="stylesheet"/>
+    <link href="{% static 'dynamics-manage/css/dynamics-manage.css' %}" rel="stylesheet"/>
+    <script src="{% static 'frameworks/winjs/js/base.min.js' %}"></script>
+    <script src="{% static 'frameworks/winjs/js/ui.min.js' %}"></script>
+    <script src="{% static 'frameworks/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'frameworks/jquery/js.cookie.js' %}"></script>
+    <script src="{% static 'frameworks/zero-clipboard/ZeroClipboard.min.js' %}"></script>
+    <script src="{% static 'dynamics-manage/js/dim.js' %}"></script>
+    <script src="{% static 'dynamics-manage/js/dynamics-manage.js' %}"></script>
+    <script src="{% static 'common/js/common.js' %}"></script>
+</head>
+<body style="opacity: 0">
+<script type="text/javascript">
+    if(navigator.userAgent.indexOf('MQQBrowser') > -1){
+        alert("QQ内置浏览器暂不支持加载外部文件中的Javascript。\n请尝试使用其他浏览器打开，谢谢。");
+    }
+    else if(navigator.userAgent.indexOf('UCBrowser') > -1 && navigator.userAgent.indexOf('Mobile') > -1){
+        alert("手机UC浏览器暂不支持加载外部文件中的Javascript。\n请尝试使用其他浏览器打开，谢谢。");
+    }
+</script>
+<div id="dynamics-template" data-win-control="WinJS.Binding.Template">
+    <div class="dynamics-content">
+        <div class="dynamics-desc">动态</div>
+
+        <div class="dynamics-id" data-win-bind="textContent: ID"></div>
+
+        <h5 class="win-h5 dtitle" data-win-bind="textContent: Title"></h5>
+
+        <p class="dauthor" data-win-bind="textContent: Author"></p>
+    </div>
+</div>
+<div id="error-dialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+             primaryCommandText: '刷新',
+             secondaryCommandText: '取消'}">
+    <h3 class="win-h3">嗯，我们无法访问该页面。</h3>
+
+    <p>请检查您的网络连接，并单击“刷新”按钮。</p>
+</div>
+<div id="url-dialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+             primaryCommandText: '确定'}">
+    <h3 class="win-h3">生成URL</h3>
+
+    <p>该动态的URL为：<div id="dynamics-url"></div></p>
+    <p>在URL上单击即可复制至剪贴板。</p>
+</div>
+<div id="copied-dialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+             primaryCommandText: '确定'}">
+    <h3 class="win-h3">生成URL</h3>
+
+    <p>该动态的URL已成功复制至您的剪贴板上。</p>
+</div>
+<div id="notselected-dialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+             primaryCommandText: '确定'}">
+    <h3 class="win-h3">您没有选择任何一条动态。</h3>
+
+    <p>请在选择一条动态后，再重新单击该按钮。</p>
+</div>
+<div id="paperFlyout" data-win-control="WinJS.UI.Flyout" aria-label="{Paper Create Flyout}">
+    <div class="flyout-desc">
+        <p>该动态目前尚无关联的问卷，单击“新建”按钮以新建一张问卷。</p>
+
+        <p class="warning">注意：此操作无法撤销！</p>
+    </div>
+    <button class="win-button" id="confirmButton" onclick="confirmAddPaper();">新建</button>
+</div>
+<div id="saveFlyout" data-win-control="WinJS.UI.Flyout" aria-label="{Save Success Flyout}">
+    <div class="flyout-desc">
+        <p>保存成功！</p>
+    </div>
+</div>
+<div class="splitView" data-win-control="WinJS.UI.SplitView">
+    <div id="pane">
+        <div class="header">
+            <button
+                    class="win-splitviewpane-toggle"
+                    data-win-control="WinJS.UI.SplitViewPaneToggle"
+                    data-win-options="{ splitView: select('.splitView') }"
+                    ></button>
+            <div class="title">后台管理</div>
+        </div>
+
+        <div class="nav-commands">
+            <a href="/admin/dynamics-manage" data-win-control="WinJS.UI.NavBarCommand"
+               data-win-options="{ label: '动态管理', icon: 'comment'}"></a>
+            <a href="/admin/settings" data-win-control="WinJS.UI.NavBarCommand"
+               data-win-options="{ label: '页面设置', icon: 'settings'}"></a>
+            <a href="/admin/logout" class="place-bottom" data-win-control="WinJS.UI.NavBarCommand"
+               data-win-options="{ label: '退出登录', icon: 'backtowindow'}"></a>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row first-row">
+                <div class="col-md-12">
+                    <img class="logo" src="{% static 'images/logo100.png' %}">
+
+                    <h1 id="header" class="win-h1">动态管理</h1>
+                </div>
+            </div>
+            <div class="row no-space">
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-12 border dynamics">
+                            <div id="dynamics-list"
+                                 class="listview win-selectionstylefilled"
+                                 data-win-control="WinJS.UI.ListView"
+                                 data-win-options="{
+                                         itemDataSource: MSTCWebsite.Dynamics.dataSource,
+                                         itemTemplate: select('#dynamics-template'),
+                                         selectionMode: 'single',
+                                         tapBehavior: 'directSelect',
+                                         layout: { type: WinJS.UI.ListLayout },
+                                         oniteminvoked: selectDynamics}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div id="designer" class="col-md-12 border designer" onscroll="designerScroll();">
+                            <div id="designer-container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="same-row" for="title">标题：</label>
+                                        <input id="title" class="same-row" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="same-row" for="author">作者：</label>
+                                        <input id="author" class="same-row" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="same-row" for="type-select">标签：</label>
+                                        <select id="type-select" class="same-row">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="same-row" for="abstract">摘要：</label>
+                                        <input id="abstract" class="same-row" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="same-row" for="viewed-times">阅读次数：</label>
+                                        <input type="text" readonly="readonly" id="viewed-times"/>
+                                    </div>
+                                </div>
+                                <hr style="margin-bottom: 0;"/>
+                                <div class="row" id="paper-state-row">
+                                    <div class="col-md-12">
+                                        <div id="paper-state"
+                                             data-win-control="WinJS.UI.ToggleSwitch"
+                                             data-win-options="{title: '活动状态', labelOn: '&#24320', labelOff: '&#20851', onchange: onBannerToggle}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <img id="enroll-img" src="{% static 'images/enroll.png' %}" onclick="editPaper();">
+                                <hr style="margin-top: 0"/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ form }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="createAppBar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom'}">
+    <button data-win-control="WinJS.UI.AppBarCommand"
+            data-win-options="{id:'cmdAdd',label:'添加动态',icon:'add',tooltip:'添加动态',section:'primary'}"
+            onclick="addDynamics();"></button>
+    <button data-win-control="WinJS.UI.AppBarCommand"
+            data-win-options="{id:'cmdDelete',label:'删除动态',icon:'delete',tooltip:'删除动态',section:'primary'}"
+            onclick="deleteDynamics();"></button>
+    <button data-win-control="WinJS.UI.AppBarCommand"
+            data-win-options="{id:'cmdPaper',label:'打开问卷',icon:'document',tooltip:'打开问卷',section:'primary'}"
+            onclick="editPaper();"></button>
+    <button data-win-control="WinJS.UI.AppBarCommand"
+            data-win-options="{id:'cmdSave',label:'保存动态',icon:'save',tooltip:'保存动态',section:'primary'}"
+            onclick="saveDynamics();"></button>
+    <button data-win-control="WinJS.UI.AppBarCommand"
+            data-win-options="{id:'cmdURL',label:'生成URL',icon:'attach',tooltip:'生成URL',section:'primary'}"
+            onclick="generateURL();"></button>
+</div>
+{% csrf_token %}
+</body>
+<script type="text/javascript">
+    load();
+</script>
+</html>

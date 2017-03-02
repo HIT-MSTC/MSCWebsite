@@ -1,0 +1,47 @@
+/*
+ * Created by Robert Xie
+ * © 2015 HIT Microsoft Club
+ * All Rights Reserved
+ */
+
+.win-pivot button.win-pivot-header{
+    color: rgba(45, 50, 57, 0.6) !important;
+}
+.win-pivot button.win-pivot-header:hover{
+    color: rgba(45, 50, 57, 0.8) !important;
+}
+.win-pivot button.win-pivot-header:focus, .win-pivot button.win-pivot-header.win-pivot-header:hover:active{
+    color: rgba(45, 50, 57, 0.8) !important;
+}
+.win-pivot button.win-pivot-header.win-pivot-header-selected{
+    color: rgba(45, 50, 57, 1.0) !important;
+}
+
+.win-pivot .win-pivot-navbutton{
+    background-color: #cdcdcd;
+    color: #2d3239;
+}
+
+.dynamics-content:hover{
+    background-color: rgb(205, 205, 205);
+}
+
+.dynamics-content.selected{
+    background-color: rgba(0, 120, 215, 0.6);
+    color: #ffffff;
+}
+
+.dynamics-content.selected:hover{
+    background-color: rgba(0, 120, 215, 1.0);
+    color: #ffffff;
+}
+
+@media(max-width: 992px){
+    .win-pivot-header{
+        font-size: 4.0rem !important;
+        height: 100% !important;
+    }
+    .win-pivot-headers{
+        height: 100% !important;
+    }
+}

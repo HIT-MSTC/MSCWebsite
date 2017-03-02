@@ -1,0 +1,51 @@
+.win-toggleswitch-header,
+.win-toggleswitch-value {
+    color: #000000;
+}
+.win-toggleswitch-thumb {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.win-toggleswitch-off .win-toggleswitch-track {
+    border-color: rgba(0, 0, 0, 0.8);
+}
+.win-toggleswitch-pressed .win-toggleswitch-thumb {
+    background-color: #ffffff;
+}
+.win-toggleswitch-pressed .win-toggleswitch-track {
+    border-color: transparent;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.win-toggleswitch-disabled .win-toggleswitch-header,
+.win-toggleswitch-disabled .win-toggleswitch-value {
+    color: rgba(0, 0, 0, 0.2);
+}
+.win-toggleswitch-disabled .win-toggleswitch-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.win-toggleswitch-disabled .win-toggleswitch-track {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+.win-toggleswitch-on .win-toggleswitch-thumb {
+    background-color: #ffffff;
+}
+.win-toggleswitch-on .win-toggleswitch-track {
+    border-color: transparent;
+}
+.win-toggleswitch-on.win-toggleswitch-pressed .win-toggleswitch-track {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.win-toggleswitch-on.win-toggleswitch-disabled .win-toggleswitch-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.win-toggleswitch-on.win-toggleswitch-disabled .win-toggleswitch-track {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+html.win-hoverable .win-toggleswitch:not(.win-toggleswitch-disabled):not(.win-toggleswitch-pressed) .win-toggleswitch-clickregion:hover .win-toggleswitch-thumb {
+    background-color: #000000;
+}
+html.win-hoverable .win-toggleswitch:not(.win-toggleswitch-disabled):not(.win-toggleswitch-pressed).win-toggleswitch-on .win-toggleswitch-clickregion:hover .win-toggleswitch-thumb {
+    background-color: #ffffff;
+}
+html.win-hoverable .win-toggleswitch-off:not(.win-toggleswitch-disabled):not(.win-toggleswitch-pressed) .win-toggleswitch-clickregion:hover .win-toggleswitch-track {
+    border-color: #000000;
+}

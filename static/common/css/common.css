@@ -1,0 +1,186 @@
+/*
+ * Created by Robert Xie
+ * © 2015 HIT Microsoft Club
+ * All Rights Reserved
+ */
+
+body {
+    height: 100%;
+    font-family: "Segoe UI", "Microsoft YaHei UI", sans-serif, "Segoe MDL2 Assets", "Symbols";
+}
+
+img.logo {
+    float: left;
+    width: 56px;
+    height: 56px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#form-dialog .answer-row:first-child {
+    margin-top: 0 !important;
+}
+
+#form-dialog .answer-row {
+    clear: both;
+    margin-top: 10px;
+}
+
+#form-dialog .answer-row > select,
+#form-dialog .answer-row > input[type=text] {
+    color: #2d3239;
+    width: 150px;
+    margin-left: 0;
+}
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#form-dialog .answer-row > input[type=checkbox] {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+#form-dialog .answer-row > .option-label {
+    float: left;
+    margin-right: 20px;
+}
+
+#form-dialog .answer-row > textarea {
+    color: #2d3239;
+    width: 100%;
+}
+
+h2.win-type-subheader, h3.win-type-title, h2.win-h2, h3.win-h3 {
+    margin-bottom: 15px;
+}
+
+.container-fluid > .row.first-row {
+    margin: 30px 0;
+    color: #ffffff !important;
+}
+
+.container-fluid > .row.no-space {
+    margin: 0;
+}
+
+.container-fluid > .row .border {
+    padding: 15px 0;
+    background-color: #ffffff;
+}
+
+.container-fluid > .row .border > .row img {
+    width: 100%;
+    height: auto;
+}
+
+.container-fluid > .row, .container-fluid > .row > * > .row {
+    margin-bottom: 30px;
+    color: #2d3239;
+}
+
+.container-fluid > .row > * .row > * .row {
+    margin-bottom: 0;
+}
+
+.container-fluid > .row > * .row > * .row > * p {
+    margin: 0;
+}
+
+.win-h3 {
+    font-size: 2.1rem;
+}
+
+.win-contentdialog .win-contentdialog-dialog {
+    min-height: 0 !important;
+}
+
+.win-contentdialog .win-contentdialog-dialog .row{
+    margin-top: 15px;
+}
+
+.win-contentdialog .win-contentdialog-dialog .col-md-1,
+.win-contentdialog .win-contentdialog-dialog .col-md-2,
+.win-contentdialog .win-contentdialog-dialog .col-md-3,
+.win-contentdialog .win-contentdialog-dialog .col-md-4,
+.win-contentdialog .win-contentdialog-dialog .col-md-5,
+.win-contentdialog .win-contentdialog-dialog .col-md-6,
+.win-contentdialog .win-contentdialog-dialog .col-md-7,
+.win-contentdialog .win-contentdialog-dialog .col-md-8,
+.win-contentdialog .win-contentdialog-dialog .col-md-9,
+.win-contentdialog .win-contentdialog-dialog .col-md-10,
+.win-contentdialog .win-contentdialog-dialog .col-md-11,
+.win-contentdialog .win-contentdialog-dialog .col-md-12{
+    padding: 0;
+}
+
+@media (min-width: 992px) and (max-width: 1340px) {
+    body, p, .win-button {
+        font-size: 1.1rem;
+    }
+
+    .win-h2 {
+        font-size: 2.15rem;
+    }
+
+    .win-type-title, .win-h3 {
+        font-size: 1.5rem;
+    }
+
+    .win-h4 {
+        font-size: 1.25rem;
+    }
+
+    .win-h5 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    img.logo {
+        width: 81px;
+        height: 81px;
+        margin-right: 20px;
+    }
+
+    body {
+        font-size: 2.5rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: #2e80ab !important;
+    }
+
+    .win-contentdialog .win-contentdialog-content, .win-button {
+        font-size: 2.5rem;
+    }
+
+    .win-contentdialog .win-contentdialog-dialog {
+        max-width: 520px;
+    }
+
+    .win-h1 {
+        font-size: 6.66rem;
+    }
+
+    .win-h2 {
+        font-size: 5.0rem;
+    }
+
+    .win-type-title, .win-h3 {
+        font-size: 3.5rem;
+    }
+
+    .win-h4 {
+        font-size: 3.0rem;
+    }
+
+    .win-h5 {
+        font-size: 2.5rem;
+    }
+}

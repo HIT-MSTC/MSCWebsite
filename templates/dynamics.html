@@ -1,0 +1,154 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>全部动态</title>
+    <link href="{% static 'frameworks/winjs/css/ui-dark.css' %}" rel="stylesheet"/>
+    <link href="{% static 'frameworks/bootstrap/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'frameworks/metro-icon/css/metro-icons.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'frameworks/highlightjs/css/darkula.css' %}" rel="stylesheet">
+    <link href="{% static 'common/css/common.css' %}" rel="stylesheet"/>
+    <link href="{% static 'common/css/splitview.css' %}" rel="stylesheet"/>
+    <link href="{% static 'common/css/pivot.css' %}" rel="stylesheet"/>
+    <link href="{% static 'dynamics/css/dynamics.css' %}" rel="stylesheet"/>
+    <script src="{% static 'frameworks/winjs/js/base.min.js' %}"></script>
+    <script src="{% static 'frameworks/winjs/js/ui.min.js' %}"></script>
+    <script src="{% static 'frameworks/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'frameworks/jquery/jquery.json.min.js' %}"></script>
+    <script src="{% static 'frameworks/jquery/js.cookie.js' %}"></script>
+    <script src="{% static 'frameworks/highlightjs/js/highlight.pack.js' %}"></script>
+    <script src="{% static 'frameworks/zero-clipboard/ZeroClipboard.min.js' %}"></script>
+    <script src="{% static 'dynamics/js/dim.js' %}"></script>
+    <script src="{% static 'dynamics/js/dynamics.js' %}"></script>
+    <script src="{% static 'common/js/common.js' %}"></script>
+</head>
+<body style="opacity: 0">
+<script type="text/javascript">
+    if(navigator.userAgent.indexOf('MQQBrowser') > -1){
+        alert("QQ内置浏览器暂不支持加载外部文件中的Javascript。\n请尝试使用其他浏览器打开，谢谢。");
+    }
+    else if(navigator.userAgent.indexOf('UCBrowser') > -1 && navigator.userAgent.indexOf('Mobile') > -1){
+        alert("手机UC浏览器暂不支持加载外部文件中的Javascript。\n请尝试使用其他浏览器打开，谢谢。");
+    }
+    if (isMobile()) {
+        var id = getQueryString("ID");
+        if(id != null){
+            window.location.replace("/dynamics-mobile/?ID=" + id);
+        }
+        else{
+            window.location.replace("/dynamics-mobile-all");
+        }
+    }
+</script>
+<div id="dynamics-template" data-win-control="WinJS.Binding.Template">
+    <div class="dynamics-content" onclick="selectDynamics(this);">
+        <div class="dynamics-id" data-win-bind="textContent: ID"></div>
+
+        <h5 class="win-h5 dtitle" data-win-bind="textContent: Title"></h5>
+
+        <p class="dauthor" data-win-bind="textContent: Author"></p>
+
+        <p class="ddate" data-win-bind="textContent: PublishDate"></p>
+    </div>
+</div>
+<div id="form-dialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+             primaryCommandText: '提交',
+             secondaryCommandText: '取消'}">
+</div>
+<div id="error-dialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+             primaryCommandText: '刷新',
+             secondaryCommandText: '取消'}">
+    <h3 class="win-h3">嗯，我们无法访问该页面。</h3>
+
+    <p>请检查您的网络连接，并单击“刷新”按钮。</p>
+</div>
+<div id="success-dialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+             primaryCommandText: '确定'}">
+    <h3 class="win-h3">活动报名成功！</h3>
+
+    <p>请单击“确定”按钮返回。</p>
+</div>
+<div id="code-dialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+             primaryCommandText: '确定'}">
+    <h3 class="win-h3">代码复制</h3>
+
+    <p>代码已成功复制至您的剪贴板上。</p>
+</div>
+<div id="about-dialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+             primaryCommandText: '确定'}">
+    <h3 class="win-h3">关于</h3>
+
+    <p>前端设计：<a href="https://www.xieaoran.com/">xieaoran</a>（解奥然）</p>
+
+    <p>后端工程：<a href="https://github.com/ChenMai">CatYing</a>（陈劢）</p>
+
+    <p>技术监督：<a href="http://www.yumendy.com/">听雨轩</a>（段艺）</p>
+
+    <p>特别感谢：<a href="https://github.com/blackgreymon">blackgreymon</a>（唐晓程）</p>
+
+    <p class="no-space">© 2015 哈尔滨工业大学微软学生俱乐部。</p>
+</div>
+<div class="splitView" data-win-control="WinJS.UI.SplitView">
+    <div id="pane">
+        <div class="header">
+            <button
+                    class="win-splitviewpane-toggle"
+                    data-win-control="WinJS.UI.SplitViewPaneToggle"
+                    data-win-options="{ splitView: select('.splitView') }"
+                    ></button>
+            <div class="title">哈工大微软学生俱乐部</div>
+        </div>
+
+        <div class="nav-commands">
+            <a href="/" data-win-control="WinJS.UI.NavBarCommand"
+               data-win-options="{ label: '首页', icon: 'home'}"></a>
+            <a href="/dynamics" data-win-control="WinJS.UI.NavBarCommand"
+               data-win-options="{ label: '动态', icon: 'comment'}"></a>
+
+            <div onclick="showAboutDialog();" class="place-bottom" data-win-control="WinJS.UI.NavBarCommand"
+                 data-win-options="{ label: '关于', icon: 'help'}"></div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row first-row">
+                <div class="col-md-12">
+                    <img class="logo" src="{% static 'images/logo100.png' %}">
+
+                    <h1 id="header" class="win-h1">动态</h1>
+                </div>
+            </div>
+            <div class="row no-space">
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-12 border dynamics">
+                            <div id="dynamics-list" data-win-control="WinJS.UI.Pivot"
+                                 data-win-options="{ selectedIndex: 0 }">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div id="text" class="col-md-12 border text">
+                            <div id="text-content" style="opacity: 0">
+                                <div id="title"></div>
+                                <div id="author"></div>
+                                <div id="publish-date"></div>
+                                <div id="main"></div>
+                                <div id="form"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% csrf_token %}
+</body>
+<script type="text/javascript">
+    load();
+</script>
+</html>
